@@ -1,0 +1,22 @@
+build
+dist
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+.env.test
+
+.cache
+.cache/

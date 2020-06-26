@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "husky.config.js": true,
+    ".commitlintrc.js": true,
+    ".gitignore": true,
+    ".eslintignore": true,
+    ".eslintrc.js": true,
+    ".prettierignore": true,
+    ".prettierrc.js": true,
+    "package-lock.json": true,
+    "tsconfig.eslint.json": true,
+    "tsconfig.json": true,
+    "lint-staged.config.js": true,
+    "jest.config.js": true,
+    "node_modules": true,
+    ".vscode": true
+  }
+}

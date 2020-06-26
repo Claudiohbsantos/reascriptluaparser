@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "outDir": "build",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+  },
+  // "exclude": ["node_modules", "tests"]
+  "include": ["src/**/*.ts"]
+}
