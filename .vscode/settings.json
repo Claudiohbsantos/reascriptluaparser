@@ -9,7 +9,6 @@
     "package-lock.json": true,
     "tsconfig.eslint.json": true,
     "lint-staged.config.js": true,
-    "jest.config.js": true,
     "node_modules": true
   },
   "dimmer.enabled": false
