@@ -1,6 +1,7 @@
 build
 dist
 api 
+coverage 
 
 # Logs
 logs
