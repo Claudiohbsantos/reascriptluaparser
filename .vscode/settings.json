@@ -8,11 +8,9 @@
     ".prettierrc.js": true,
     "package-lock.json": true,
     "tsconfig.eslint.json": true,
-    "tsconfig.json": true,
     "lint-staged.config.js": true,
     "jest.config.js": true,
-    "node_modules": true,
-    ".vscode": true,
-    ".gitignore": true
-  }
+    "node_modules": true
+  },
+  "dimmer.enabled": false
 }
