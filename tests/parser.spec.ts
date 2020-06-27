@@ -1,4 +1,5 @@
-import { parser, Method } from '../src/parser'
+import { parser } from '../src/parser'
+import { Method } from '../src/types'
 
 describe('no return and no parameters', () => {
   let received: Method[]
@@ -112,6 +113,76 @@ describe('multiple returns and multiple params', () => {
   })
 })
 
-// describe('description with <br> in the middle')
+describe('description with <br> in the middle', () => {
+  const functionHTML = `<body><a name="GetMediaItemInfo_Value"><hr></a><br>
+  <div class="c_func"><span class='all_view'>C: </span><code>double GetMediaItemInfo_Value(MediaItem* item, const char* parmname)</code><br><br></div>
+  <div class="e_func"><span class='all_view'>EEL: </span><code><i>double </i> GetMediaItemInfo_Value(<i>MediaItem</i> item, "parmname")</code><br><br></div>
+  <div class="l_func"><span class='all_view'>Lua: </span><code><i>number</i> reaper.GetMediaItemInfo_Value(<i>MediaItem</i> item, <i>string</i> parmname)</code><br><br></div>
+  <div class="p_func"><span class='all_view'>Python: </span><code><i>Float</i>  RPR_GetMediaItemInfo_Value(<i>MediaItem</i> item, <i>String</i> parmname)</code><br><br></div>
+  Get media item numerical-value attributes.<br>
+  B_MUTE : bool * : muted<br>
+  B_LOOPSRC : bool * : loop source<br>
+  <br><br>
+  <a name="GetMediaItemNumTakes"><hr></a><br></body>`
 
-// describe('built in functions')
+  const expected = [
+    {
+      name: 'GetMediaItemInfo_Value',
+      returns: [{ type: 'number' }],
+      params: [
+        { type: 'MediaItem', name: 'item' },
+        { type: 'string', name: 'parmname' },
+      ],
+      namespace: 'reaper',
+      description: `Get media item numerical-value attributes.
+B_MUTE : bool * : muted
+B_LOOPSRC : bool * : loop source`,
+    },
+  ]
+
+  let received: Method[]
+  beforeAll(() => {
+    received = parser(functionHTML)
+  })
+
+  it('gives entire description back', () => {
+    expect(received).toMatchObject(expected)
+  })
+})
+
+describe('built in functions', () => {
+  const functionHTML = `<div class="l_funcs"><br><br><hr><br><h2>ReaScript/Lua Built-In Function list</h2>
+<a name="lua_atexit"><hr></a><br>
+Lua: <code>reaper.atexit(function)</code><br><br>
+Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.<br><br>
+<a name="lua_defer"><hr></a><br>
+Lua: <code>reaper.defer(function)</code><br><br>
+Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().
+Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.
+</div><div class="p_funcs"><br><br><hr><br><h2>ReaScript/Python Built-In Function list</h2>
+<a name="python_atexit"><hr></a><br>
+Python: <code>RPR_atexit(String)</code><br><br>
+Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.<br><br>
+</div>`
+
+  const expected = [
+    {
+      name: 'atexit',
+      params: [{ name: 'function' }],
+      description:
+        'Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.',
+    },
+    {
+      name: 'defer',
+      params: [{ name: 'function' }],
+      description: `Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().
+Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.`,
+    },
+  ]
+
+  const received = parser(functionHTML)
+
+  it('descriptions names and params match', () => {
+    expect(received).toMatchObject(expected)
+  })
+})
