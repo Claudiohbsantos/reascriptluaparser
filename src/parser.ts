@@ -3,8 +3,21 @@ import jsdom = require('jsdom')
 import { Method } from './types'
 import { parseFunctionEntry } from './functionSignatureParser'
 
+/**
+ * @description Parses the Reascript API and returns array of objects containing Lua Functions.
+ * @returns Method: array of objects, each representing one function.
+ */
 export function parser(apiHTML: string): Method[] {
-  const { document } = new jsdom.JSDOM(apiHTML).window
+  let document
+  try {
+    document = new jsdom.JSDOM(apiHTML).window.document
+  } catch (err) {
+    throw Error('ERROR: failed to parse html string')
+  }
+
+  if (!/REAPER API/.test(document.title)) {
+    throw Error(`The html doesn't seem to be a reaper api page.`)
+  }
 
   const mainMethods = parseLuaFunctions(document.getElementsByClassName('l_func'))
   const builtIn = parseLuaFunctions(document.getElementsByClassName('l_funcs'))

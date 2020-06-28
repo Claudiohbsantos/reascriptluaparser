@@ -4,7 +4,7 @@ import { Method } from '../src/types'
 describe('no return and no parameters', () => {
   let received: Method[]
   beforeAll(() => {
-    const functionHTML = `<body><a name="UpdateArrange"><hr></a><br>
+    const functionHTML = `<head><title>REAPER API functions</title></head><body><a name="UpdateArrange"><hr></a><br>
   <div class="c_func"><span class='all_view'>C: </span><code>void UpdateArrange()</code><br><br></div>
   <div class="e_func"><span class='all_view'>EEL: </span><code>UpdateArrange()</code><br><br></div>
   <div class="l_func"><span class='all_view'>Lua: </span><code>reaper.UpdateArrange()</code><br><br></div>
@@ -38,7 +38,7 @@ describe('no return and no parameters', () => {
 describe('typed return and single param', () => {
   let received: Method[]
   beforeAll(() => {
-    const functionHTML = `<body><a name="GetTakeName"><hr></a><br>
+    const functionHTML = `<head><title>REAPER API functions</title></head><body><a name="GetTakeName"><hr></a><br>
   <div class="c_func"><span class='all_view'>C: </span><code>const char* GetTakeName(MediaItem_Take* take)</code><br><br></div>
   <div class="e_func"><span class='all_view'>EEL: </span><code>bool  GetTakeName(#retval, <i>MediaItem_Take</i> take)</code><br><br></div>
   <div class="l_func"><span class='all_view'>Lua: </span><code><i>string</i> reaper.GetTakeName(<i>MediaItem_Take</i> take)</code><br><br></div>
@@ -74,7 +74,7 @@ describe('typed return and single param', () => {
 describe('multiple returns and multiple params', () => {
   let received: Method[]
   beforeAll(() => {
-    const functionHTML = `<body><a name="TakeFX_FormatParamValueNormalized"><hr></a><br>
+    const functionHTML = `<head><title>REAPER API functions</title></head><body><a name="TakeFX_FormatParamValueNormalized"><hr></a><br>
   <div class="c_func"><span class='all_view'>C: </span><code>bool TakeFX_FormatParamValueNormalized(MediaItem_Take* take, int fx, int param, double value, char* buf, int buf_sz)</code><br><br></div>
   <div class="e_func"><span class='all_view'>EEL: </span><code><i>bool </i> TakeFX_FormatParamValueNormalized(<i>MediaItem_Take</i> take, <i>int </i>fx, <i>int </i>param, value, #buf)</code><br><br></div>
   <div class="l_func"><span class='all_view'>Lua: </span><code><i>boolean</i> retval, <i>string </i>buf = reaper.TakeFX_FormatParamValueNormalized(<i>MediaItem_Take</i> take, <i>integer</i> fx, <i>integer</i> param, <i>number</i> value, <i>string </i>buf)</code><br><br></div>
@@ -114,7 +114,7 @@ describe('multiple returns and multiple params', () => {
 })
 
 describe('description with <br> in the middle', () => {
-  const functionHTML = `<body><a name="GetMediaItemInfo_Value"><hr></a><br>
+  const functionHTML = `<head><title>REAPER API functions</title></head><body><a name="GetMediaItemInfo_Value"><hr></a><br>
   <div class="c_func"><span class='all_view'>C: </span><code>double GetMediaItemInfo_Value(MediaItem* item, const char* parmname)</code><br><br></div>
   <div class="e_func"><span class='all_view'>EEL: </span><code><i>double </i> GetMediaItemInfo_Value(<i>MediaItem</i> item, "parmname")</code><br><br></div>
   <div class="l_func"><span class='all_view'>Lua: </span><code><i>number</i> reaper.GetMediaItemInfo_Value(<i>MediaItem</i> item, <i>string</i> parmname)</code><br><br></div>
@@ -151,7 +151,7 @@ B_LOOPSRC : bool * : loop source`,
 })
 
 describe('built in functions', () => {
-  const functionHTML = `<div class="l_funcs"><br><br><hr><br><h2>ReaScript/Lua Built-In Function list</h2>
+  const functionHTML = `<head><title>REAPER API functions</title></head><div class="l_funcs"><br><br><hr><br><h2>ReaScript/Lua Built-In Function list</h2>
 <a name="lua_atexit"><hr></a><br>
 Lua: <code>reaper.atexit(function)</code><br><br>
 Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.<br><br>
