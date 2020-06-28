@@ -186,3 +186,75 @@ Note that no undo point will be automatically created when the script finishes, 
     expect(received).toMatchObject(expected)
   })
 })
+
+describe('mock full page', () => {
+  const fullHTML = `<html><head><title>
+  REAPER API functions
+  </title>
+  </head><body onLoad='onLoad()'><a name="function_list"></a>
+  <br><hr><h3>API Function List</h3>
+  <code><table>
+  <tr><td><a href="#AddMediaItemToTrack">AddMediaItemToTrack</a> &nbsp; &nbsp; </td>
+  <td><a href="#GetEnvelopePoint">GetEnvelopePoint</a> &nbsp; &nbsp; </td></tr>
+  </table></code>
+  <br><br>
+  <a name="AddMediaItemToTrack"><hr></a><br>
+  <div class="c_func"><span class='all_view'>C: </span><code>MediaItem* AddMediaItemToTrack(MediaTrack* tr)</code><br><br></div>
+  <div class="e_func"><span class='all_view'>EEL: </span><code><i>MediaItem</i>  AddMediaItemToTrack(<i>MediaTrack</i> tr)</code><br><br></div>
+  <div class="l_func"><span class='all_view'>Lua: </span><code><i>MediaItem</i> reaper.AddMediaItemToTrack(<i>MediaTrack</i> tr)</code><br><br></div>
+  <div class="p_func"><span class='all_view'>Python: </span><code><i>MediaItem</i>  RPR_AddMediaItemToTrack(<i>MediaTrack</i> tr)</code><br><br></div>
+  creates a new media item.<br><br>
+  <a name="Xen_StopSourcePreview"><hr></a><br>
+  <div class="c_func"><span class='all_view'>C: </span><code>int Xen_StopSourcePreview(int preview_id)</code><br><br></div>
+  <div class="e_func"><span class='all_view'>EEL: </span><code><i>int </i> extension_api("Xen_StopSourcePreview", <i>int </i>preview_id)</code><br><br></div>
+  <div class="l_func"><span class='all_view'>Lua: </span><code><i>integer</i> reaper.Xen_StopSourcePreview(<i>integer</i> preview_id)</code><br><br></div>
+  <div class="p_func"><span class='all_view'>Python: </span><code><i>Int</i>  Xen_StopSourcePreview(<i>Int</i> preview_id)</code><br><br></div>
+  Stop audio preview. id -1 stops all.<br><br>
+  <div class="l_funcs"><br><br><hr><br><h2>ReaScript/Lua Built-In Function list</h2>
+  <a name="lua_atexit"><hr></a><br>
+  Lua: <code>reaper.atexit(function)</code><br><br>
+  Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.<br><br>
+  <a name="lua_defer"><hr></a><br>
+  Lua: <code>reaper.defer(function)</code><br><br>
+  Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().<br>Note that no undo point will be automatically created when the script finishes, unless you create it explicitly.<br><br>
+  </div>
+  </body></html>
+  `
+
+  const expected = [
+    {
+      name: 'AddMediaItemToTrack',
+      namespace: 'reaper',
+      params: [{ type: 'MediaTrack', name: 'tr' }],
+      returns: [{ type: 'MediaItem' }],
+      description: 'creates a new media item.',
+    },
+    {
+      name: 'Xen_StopSourcePreview',
+      namespace: 'reaper',
+      params: [{ type: 'integer', name: 'preview_id' }],
+      returns: [{ type: 'integer' }],
+      description: 'Stop audio preview. id -1 stops all.',
+    },
+    {
+      name: 'atexit',
+      namespace: 'reaper',
+      params: [{ name: 'function' }],
+      description:
+        'Adds code to be executed when the script finishes or is ended by the user. Typically used to clean up after the user terminates defer() or runloop() code.',
+    },
+    {
+      name: 'defer',
+      namespace: 'reaper',
+      params: [{ name: 'function' }],
+      description:
+        'Adds code to be called back by REAPER. Used to create persistent ReaScripts that continue to run and respond to input, while the user does other tasks. Identical to runloop().\nNote that no undo point will be automatically created when the script finishes, unless you create it explicitly.',
+    },
+  ]
+
+  const received = parser(fullHTML)
+
+  it('All methods match', () => {
+    expect(received).toStrictEqual(expected)
+  })
+})
