@@ -44,16 +44,29 @@ function parseLuaFunctions(luaFunctions: HTMLCollection): Method[] {
   return methods
 }
 
+interface ChildNodeOrElement extends ChildNode {
+  href?: string
+}
+
 function lookForDescription(node: Element): string {
-  let currNode: ChildNode | null = node.nextSibling
+  let currNode = node.nextSibling as ChildNodeOrElement | null
 
   let description = ''
   while (currNode) {
     if (currNode.nodeName !== '#text') {
-      if (currNode.nodeName == 'A') break
+      if (currNode.nodeName == 'A') {
+        if (currNode.ELEMENT_NODE && currNode.href && currNode.textContent) {
+          description = description + currNode.textContent
+        } else {
+          break
+        }
+      }
+      if (currNode.nodeName === 'BR') {
+        if (!/\n$/.test(description)) description = description + '\n'
+      }
     } else {
-      if (currNode.textContent && /\w+/.test(currNode.textContent)) {
-        description = description + currNode.textContent.trim() + '\n'
+      if (currNode.textContent) {
+        description = description + currNode.textContent.replace(/^[\n\r]|[\n\r]$/gm, '')
       }
     }
     currNode = currNode.nextSibling

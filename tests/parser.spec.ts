@@ -120,8 +120,8 @@ describe('description with <br> in the middle', () => {
   <div class="l_func"><span class='all_view'>Lua: </span><code><i>number</i> reaper.GetMediaItemInfo_Value(<i>MediaItem</i> item, <i>string</i> parmname)</code><br><br></div>
   <div class="p_func"><span class='all_view'>Python: </span><code><i>Float</i>  RPR_GetMediaItemInfo_Value(<i>MediaItem</i> item, <i>String</i> parmname)</code><br><br></div>
   Get media item numerical-value attributes.<br>
-  B_MUTE : bool * : muted<br>
-  B_LOOPSRC : bool * : loop source<br>
+B_MUTE : bool * : muted<br>
+B_LOOPSRC : bool * : loop source<br>
   <br><br>
   <a name="GetMediaItemNumTakes"><hr></a><br></body>`
 
@@ -183,6 +183,26 @@ Note that no undo point will be automatically created when the script finishes, 
   const received = parser(functionHTML)
 
   it('descriptions names and params match', () => {
+    expect(received).toMatchObject(expected)
+  })
+})
+
+describe('links in description', () => {
+  const functionHTML = `<head><title>REAPER API functions</title></head><a name="Envelope_SortPoints"><hr></a><br>
+  <div class="c_func"><span class='all_view'>C: </span><code>bool Envelope_SortPoints(TrackEnvelope* envelope)</code><br><br></div>
+  <div class="e_func"><span class='all_view'>EEL: </span><code><i>bool </i> Envelope_SortPoints(<i>TrackEnvelope</i> envelope)</code><br><br></div>
+  <div class="l_func"><span class='all_view'>Lua: </span><code><i>boolean</i> reaper.Envelope_SortPoints(<i>TrackEnvelope</i> envelope)</code><br><br></div>
+  <div class="p_func"><span class='all_view'>Python: </span><code><i>Boolean</i>  RPR_Envelope_SortPoints(<i>TrackEnvelope</i> envelope)</code><br><br></div>
+  Sort envelope points by time. See <a href="#SetEnvelopePoint">SetEnvelopePoint</a>, <a href="#InsertEnvelopePoint">InsertEnvelopePoint</a>.<br><br>`
+
+  const expected = [
+    {
+      description: `Sort envelope points by time. See SetEnvelopePoint, InsertEnvelopePoint.`,
+    },
+  ]
+
+  const received = parser(functionHTML)
+  it('description includes all text', () => {
     expect(received).toMatchObject(expected)
   })
 })
