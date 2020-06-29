@@ -8,7 +8,8 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "lib": ["DOM"],
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "declaration": true
   },
   // "exclude": ["node_modules", "tests"]
   "include": ["src/**/*.ts"]

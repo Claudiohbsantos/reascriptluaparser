@@ -6,10 +6,13 @@
   "bin": {
     "reascriptluaparser": "build/bin/cli.js"
   },
+  "types": "build/lib/parser.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
-    "cli": "ts-node src/bin/reascriptluaparser.ts"
+    "build": "npm run clean && tsc",
+    "clean": "rimraf build/",
+    "cli": "ts-node src/bin/cli.ts",
+    "prepublish": "npm run test && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +35,7 @@
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
