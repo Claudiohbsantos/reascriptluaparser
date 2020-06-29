@@ -45,7 +45,7 @@
     "reaper",
     "reascript"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "main": "build/lib/parser.js",
   "scripts": {
     "build": "npm run clean && tsc",
