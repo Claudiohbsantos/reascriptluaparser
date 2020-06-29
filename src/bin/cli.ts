@@ -4,7 +4,7 @@ import { program } from 'commander'
 import path from 'path'
 import fs from 'fs'
 
-import { parser } from '../lib/parser'
+import parser from '../lib/parser'
 
 program
   .arguments('<reascripthelp.html>')
@@ -40,9 +40,11 @@ program
     }
 
     const outputDir = path.dirname(filePath)
-    const outputPath = path.resolve(outputDir, 'reaperAPI.json')
+    const filename = 'reascript_lua_API.json'
+    const outputPath = path.resolve(outputDir, filename)
     try {
       fs.writeFileSync(outputPath, JSON.stringify(apiJSON))
+      console.log(`SUCCESS: ${filename} written to ${outputPath}`)
     } catch (err) {
       abort(
         `failed to write ouput to ${outputPath}. Do you have write permission on the directory?`

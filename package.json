@@ -1,9 +1,11 @@
 {
-  "name": "reascriptapi-parser",
+  "name": "reascriptluaparser",
   "version": "1.0.0",
   "description": "",
   "main": "build/lib/parser.js",
-  "bin": "build/bin/reascriptluaparser.js",
+  "bin": {
+    "reascriptluaparser": "build/bin/cli.js"
+  },
   "scripts": {
     "test": "jest",
     "build": "tsc",
