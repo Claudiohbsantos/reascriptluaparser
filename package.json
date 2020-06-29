@@ -48,9 +48,9 @@
     "build": "npm run clean && tsc",
     "clean": "rimraf build/",
     "cli": "ts-node src/bin/cli.ts",
-    "prepublish": "npm run test && npm run build",
+    "prepublishOnly": "npm run test && npm run build",
     "test": "jest",
-    "release": "standard-version"
+    "release": "npm run test && standard-version"
   },
   "types": "build/lib/parser.d.ts"
 }
