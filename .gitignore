@@ -3,6 +3,9 @@ dist
 api 
 coverage 
 output
+
+.vscode
+
 # Logs
 logs
 *.log
