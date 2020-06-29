@@ -1,12 +1,7 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-  ],
+  extends: ['plugin:prettier/recommended', 'plugin:import/recommended'],
   plugins: ['@typescript-eslint', 'prettier', 'jest', 'import'],
   rules: {
     'prettier/prettier': 'error',
@@ -21,6 +16,8 @@ module.exports = {
         project: ['./tsconfig.eslint.json'],
       },
       extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
         'plugin:@typescript-eslint/recommended-requiring-type-checking', // could impact performance
         'prettier/@typescript-eslint',
       ],
