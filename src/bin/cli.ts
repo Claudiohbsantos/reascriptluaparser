@@ -5,9 +5,20 @@ import path from 'path'
 import fs from 'fs'
 
 import parser from '../lib/parser'
+let version = ''
+try {
+  const pkg = fs.readFileSync(path.resolve(__dirname, '../../package.json'), 'utf8')
+  let pkgJSON
+  if (pkg) pkgJSON = JSON.parse(pkg) as Record<string, unknown>
+  if (pkgJSON && pkgJSON.version && typeof pkgJSON.version === 'string') version = pkgJSON.version
+} catch (err) {
+  abort('Failed to read package.json for version information. Try reinstalling from npm')
+  throw err
+}
 
 program
   .arguments('<reascripthelp.html>')
+  .version(version)
   .description(
     "Parse given reascripthelp.html file and generate json file in it's directory. reascripthelp.html can be created from Reaper -> Help -> Reascript Documentation"
   )
