@@ -41,7 +41,7 @@
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
-  "keywords": [],
+  "keywords": ["reaper","reascript"],
   "license": "ISC",
   "main": "build/lib/parser.js",
   "scripts": {
