@@ -4,11 +4,15 @@ import { Method } from './types'
 import { parseFunctionEntry } from './functionSignatureParser'
 
 /**
- * @description Parses the Reascript API and returns array of objects containing Lua Functions.
+ * @description Parses the Reascript API HTML and returns array of objects containing Lua Functions.
  * @param  {string} apiHTML - Contents of reascripthelp.html generated from Reaper DAW
  * @returns Method[] - array of Methods
  */
 export default function parser(apiHTML: string): Method[] {
+  if (!apiHTML || typeof apiHTML !== 'string') {
+    throw Error('reascriptluaparser requires a string as parameter')
+  }
+
   let document
   try {
     document = new jsdom.JSDOM(apiHTML).window.document
