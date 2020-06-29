@@ -78,14 +78,24 @@ In case of malformed HTML or invalid input the parser will throw.
 
 ### Minimal Example
 
+Javascript + Node
 ```javascript
 
 const fs = require('fs')
-const parser = require('reascriptluaparser')
+const parser = require('reascriptluaparser').default
 
 const html = fs.readFileSync('./reascripthelp.html','utf8')
 const api = parser(html)
 
+```
+
+Typescript (depends on your tsconfig.json)
+```typescript
+import fs = require('fs')
+import parser from 'reascriptluaparser'
+ 
+const html = fs.readFileSync('./reascripthelp.html','utf8')
+const api = parser(html)
 ```
 
 ## Types
