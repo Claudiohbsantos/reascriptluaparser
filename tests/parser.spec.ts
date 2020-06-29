@@ -1,5 +1,5 @@
-import { parser } from '../src/parser'
-import { Method } from '../src/types'
+import { parser } from '../src/lib/parser'
+import { Method } from '../src/lib/types'
 
 describe('no return and no parameters', () => {
   let received: Method[]

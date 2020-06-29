@@ -1,4 +1,4 @@
-import { parseFunctionEntry } from '../src/functionSignatureParser'
+import { parseFunctionEntry } from '../src/lib/functionSignatureParser'
 
 describe('code string parser', () => {
   it('type name - reaper. - typed params', () => {
