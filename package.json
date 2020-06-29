@@ -4,8 +4,13 @@
   "version": "1.0.0",
   "author": "Claudio Santos",
   "homepage": "https://github.com/Claudiohbsantos/reascriptluaparser",
-  "repository": {"type": "git","url": "https://github.com/Claudiohbsantos/reascriptluaparser.git"},
-  "bugs": {"url": "https://github.com/Claudiohbsantos/reascriptluaparser/issues"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Claudiohbsantos/reascriptluaparser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Claudiohbsantos/reascriptluaparser/issues"
+  },
   "bin": {
     "reascriptluaparser": "build/bin/cli.js"
   },
@@ -32,6 +37,7 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
+    "standard-version": "^8.0.0",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
@@ -43,7 +49,8 @@
     "clean": "rimraf build/",
     "cli": "ts-node src/bin/cli.ts",
     "prepublish": "npm run test && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version"
   },
   "types": "build/lib/parser.d.ts"
 }

@@ -8,11 +8,5 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * cli interface ([75dcd16](https://github.com/Claudiohbsantos/reascriptluaparser/commit/75dcd1612a20d16296114a0d42b98aa66c18d2c0))
-* cli shows version from package.json ([9c8b672](https://github.com/Claudiohbsantos/reascriptluaparser/commit/9c8b672cd0a967ade78164b3ce20297ba7819c55))
 * parse lua functions from html ([cbd2b83](https://github.com/Claudiohbsantos/reascriptluaparser/commit/cbd2b83e9d3c262aaf537f7a8c224351ca8aa2d1))
 
-
-### Bug Fixes
-
-* check input for existence and type ([612b389](https://github.com/Claudiohbsantos/reascriptluaparser/commit/612b38910e59206f4ac9fd56845bd587c284fda9))
-* parse descriptions with line breaks ([38c528f](https://github.com/Claudiohbsantos/reascriptluaparser/commit/38c528ff32d18a91b08a6624c0659b621aaf9908))
