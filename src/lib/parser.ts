@@ -8,7 +8,7 @@ import { parseFunctionEntry } from './functionSignatureParser'
  * @param  {string} apiHTML - Contents of reascripthelp.html generated from Reaper DAW
  * @returns Method[] - array of Methods
  */
-export default function parser(apiHTML: string): Method[] {
+export function parser(apiHTML: string): Method[] {
   if (!apiHTML || typeof apiHTML !== 'string') {
     throw Error('reascriptluaparser requires a string as parameter')
   }

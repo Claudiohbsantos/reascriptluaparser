@@ -4,7 +4,7 @@ import { program } from 'commander'
 import path from 'path'
 import fs from 'fs'
 
-import parser from '../lib/parser'
+import { parser } from '../lib/parser'
 let version = ''
 try {
   const pkg = fs.readFileSync(path.resolve(__dirname, '../../package.json'), 'utf8')

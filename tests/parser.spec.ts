@@ -1,4 +1,4 @@
-import parser from '../src/lib/parser'
+import { parser } from '../src/lib/parser'
 import { Method } from '../src/lib/types'
 
 describe('no return and no parameters', () => {
