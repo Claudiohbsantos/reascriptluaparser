@@ -44,7 +44,7 @@ function separateMandatoryFromOptional(signature: string, type: 'params' | 'retu
 
 function parseVariables(signature: string, type: 'params' | 'returns'): Variable[] {
   const chunks = signature.split(',')
-  const rgx = /(\w+)(?:\s+(\w+))?(?:\s+(\w+))?/
+  const rgx = /([\w.]+)(?:\s+([\w.]+))?(?:\s+([\w.]+))?/
   const variables = chunks
     .map((c) => {
       const matches = rgx.exec(c)
