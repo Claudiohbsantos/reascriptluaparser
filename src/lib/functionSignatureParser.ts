@@ -5,7 +5,7 @@ import { Method, Variable } from './types'
  * @example integer retval, string val = reaper.GetProjExtState(ReaProject proj, string extname, string key)
  */
 export function parseFunctionEntry(code: string): Method | undefined {
-  const exceptions = ['new_array']
+  const exceptions = ['new_array', 'triangle', 'printf']
 
   const rgx = /(?:(?<returns>.+)\s)?(?:(?<namespace>[\w{}.]+)\.)?(?<name>\w+)\((?<params>[^)]+)?\)/
   const matches = rgx.exec(code)
