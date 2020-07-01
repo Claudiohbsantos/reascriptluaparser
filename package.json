@@ -1,7 +1,7 @@
 {
   "name": "reascriptluaparser",
   "description": "Parser for Reascript API HTML file from Reaper DAW. Use as module or global CLI",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Claudio Santos",
   "homepage": "https://github.com/Claudiohbsantos/reascriptluaparser",
   "repository": {

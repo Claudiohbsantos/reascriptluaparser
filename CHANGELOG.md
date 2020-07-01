@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/Claudiohbsantos/reascriptluaparser/compare/v2.0.0...v2.0.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* allow for . in name or type ([27852b0](https://github.com/Claudiohbsantos/reascriptluaparser/commit/27852b0ae743b024f138c5f0ac0a8a8a41469092))
+* ignore triangle and printf ([7fc1c48](https://github.com/Claudiohbsantos/reascriptluaparser/commit/7fc1c48e6fb7bfcdd3cbb4bdd65c0d4bc47ae2ae))
+* parse 'optional' parameters and returns ([6435db9](https://github.com/Claudiohbsantos/reascriptluaparser/commit/6435db9d3e6a5e65ba2e0d64118a2dee579ebe42))
+* remove . from parameter names and types ([186344d](https://github.com/Claudiohbsantos/reascriptluaparser/commit/186344db71c8c866332c9a19a49afb32c67a801d))
+
 ## [2.0.0](https://github.com/Claudiohbsantos/reascriptluaparser/compare/v1.0.3...v2.0.0) (2020-06-30)
 
 
