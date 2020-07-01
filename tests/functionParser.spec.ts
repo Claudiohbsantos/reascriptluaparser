@@ -16,7 +16,6 @@ describe('code string parser', () => {
       ],
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
@@ -29,7 +28,6 @@ describe('code string parser', () => {
       namespace: 'reaper',
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
@@ -44,7 +42,6 @@ describe('code string parser', () => {
       namespace: 'reaper',
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
@@ -55,7 +52,6 @@ describe('code string parser', () => {
       namespace: 'reaper',
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
@@ -67,7 +63,6 @@ describe('code string parser', () => {
       namespace: 'gfx',
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
@@ -85,14 +80,12 @@ describe('code string parser', () => {
       namespace: 'gfx',
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 
   it('double optionals - dont parse', () => {
     const multiple = `reaper.new_array([table|array][size])`
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     expect(parseFunctionEntry(multiple)).toBeUndefined()
   })
 
@@ -103,7 +96,31 @@ describe('code string parser', () => {
       namespace: '{reaper.array}',
       params: [{ name: 'src' }, { name: 'srcoffs' }, { name: 'size' }, { name: 'destoffs' }],
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    expect(parseFunctionEntry(multiple)).toMatchObject(expected)
+  })
+
+  it('literal optional marker', () => {
+    const multiple = `boolean retval, optional boolean selected, optional boolean muted, optional number ppqpos, optional number type, optional string msg = reaper.MIDI_GetTextSysexEvt(MediaItem_Take take, integer textsyxevtidx, optional boolean selected, optional boolean muted, optional number ppqpos, optional number type, optional string msg)`
+    const expected = {
+      name: 'MIDI_GetTextSysexEvt',
+      returns: [
+        { type: 'boolean', name: 'retval' },
+        { type: 'boolean', name: 'selected', optional: true },
+        { type: 'boolean', name: 'muted', optional: true },
+        { type: 'number', name: 'ppqpos', optional: true },
+        { type: 'number', name: 'type', optional: true },
+        { type: 'string', name: 'msg', optional: true },
+      ],
+      params: [
+        { type: 'MediaItem_Take', name: 'take' },
+        { type: 'integer', name: 'textsyxevtidx' },
+        { type: 'boolean', name: 'selected', optional: true },
+        { type: 'boolean', name: 'muted', optional: true },
+        { type: 'number', name: 'ppqpos', optional: true },
+        { type: 'number', name: 'type', optional: true },
+        { type: 'string', name: 'msg', optional: true },
+      ],
+    }
     expect(parseFunctionEntry(multiple)).toMatchObject(expected)
   })
 })

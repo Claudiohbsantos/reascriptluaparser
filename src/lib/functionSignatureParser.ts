@@ -44,11 +44,14 @@ function separateMandatoryFromOptional(signature: string, type: 'params' | 'retu
 
 function parseVariables(signature: string, type: 'params' | 'returns'): Variable[] {
   const chunks = signature.split(',')
-  const rgx = /(\w+)(?:\s+(\w+))?/
+  const rgx = /(\w+)(?:\s+(\w+))?(?:\s+(\w+))?/
   const variables = chunks
     .map((c) => {
       const matches = rgx.exec(c)
       if (matches && matches.length > 1) {
+        if (matches[3] && matches[1] == 'optional') {
+          return { type: matches[2], name: matches[3], optional: true }
+        }
         if (matches[2]) {
           return { type: matches[1], name: matches[2] }
         } else {
